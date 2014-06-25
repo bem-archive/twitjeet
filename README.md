@@ -8,3 +8,9 @@
 > npm i
 > ./node_modules/.bin/bower i
 ```
+
+### Run development server
+
+```
+> ./node_modules/.bin/enb server
+```
