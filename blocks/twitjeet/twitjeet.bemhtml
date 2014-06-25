@@ -1,0 +1,7 @@
+block('twitjeet')(
+    js()(true),
+    elem('form')(
+        tag()('form'),
+        attrs()({ action: '/search' })
+    )
+)

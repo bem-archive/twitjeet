@@ -1,15 +1,16 @@
 {
-    "name": "bem-core-stub",
-    "version": "0.0.0",
-    "authors": [
-        "Vyacheslav Aristov <einstain@yandex-team.ru>"
-    ],
-    "dependencies": {
-        "bem-core": "git://github.com/bem/bem-core.git"
-    },
-    "ignore": [
-        "node_modules",
-        "libs",
-        "bundles"
-    ]
+  "name": "bem-core-stub",
+  "version": "0.0.0",
+  "authors": [
+    "Vyacheslav Aristov <einstain@yandex-team.ru>"
+  ],
+  "dependencies": {
+    "bem-core": "bem/bem-core#~2.2.4",
+    "bem-components": "bem/bem-components#v2"
+  },
+  "ignore": [
+    "node_modules",
+    "libs",
+    "bundles"
+  ]
 }

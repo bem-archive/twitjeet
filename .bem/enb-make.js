@@ -9,25 +9,32 @@ module.exports = function(config) {
             require('enb/techs/files'),
 
             require('enb-roole/techs/css-roole'),
-            [ require('enb-borschik/techs/borschik'), { sourceTarget: '?.css', destTarget: '_?.css', minify: true, freeze: true } ],
+            [ require('enb-borschik/techs/borschik'), { sourceTarget: '?.css', destTarget: '_?.css', minify: false, freeze: true } ],
 
             require('enb-diverse-js/techs/browser-js'),
             [ require('enb-modules/techs/prepend-modules'), { source: '?.browser.js', target: '?.js' } ],
-            [ require('enb-borschik/techs/borschik'), { sourceTarget: '?.js', destTarget: '_?.js', minify: true } ],
+            [ require('enb-borschik/techs/borschik'), { sourceTarget: '?.js', destTarget: '_?.js', minify: false } ],
 
             [ require('enb-bemxjst/techs/bemtree'), { devMode: false } ],
             [ require('enb-bemxjst/techs/bemhtml'), { devMode: false } ],
             [ require('enb/techs/file-merge'), { sources: ['?.bemtree.js', '?.bemhtml.js'], target: '?.bemxjst.js' } ],
-            require('./enb-techs/html-from-bemjson')
+            require('./enb-techs/html-from-bemjson'),
+
+            [ require('enb-diverse-js/techs/node-js'), { target: '?.pre.node.js' } ],
+            [ require('enb-modules/techs/prepend-modules'), { source: '?.pre.node.js', target: '?.node.js' } ]
 
         ]);
-        nodeConfig.addTargets(['_?.css', '_?.js', '?.html']);
+        nodeConfig.addTargets(['_?.css', '_?.js', '?.html', '?.node.js']);
 
         function getLevels() {
             return [
-                { 'path':'libs/bem-core/common.blocks','check':false },
-                { 'path':'libs/bem-core/desktop.blocks','check':false },
-                { 'path':'blocks','check':true }
+                { path: 'libs/bem-core/common.blocks', check: false },
+                { path: 'libs/bem-core/desktop.blocks', check: false },
+                { path: 'libs/bem-components/common.blocks', check: false },
+                { path: 'libs/bem-components/desktop.blocks', check: false },
+                { path: 'libs/bem-components/design/common.blocks', check: false },
+                { path: 'libs/bem-components/design/desktop.blocks', check: false },
+                { path: 'blocks', check: true }
             ].map(function(l) { return config.resolvePath(l); });
         }
     });
