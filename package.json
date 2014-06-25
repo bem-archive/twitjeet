@@ -1,0 +1,18 @@
+{
+  "name": "bem-core stub",
+  "version": "0.0.0",
+  "author": "Vyacheslav Aristov <einstain@yandex-team.ru>",
+  "dependencies": {
+    "enb": "~0.13.4",
+    "ym": "~0.1.0",
+    "enb-modules": "~0.1.2",
+    "roole": "~0.9.0",
+    "enb-roole": "~0.2.1",
+    "enb-bemxjst": "~1.2.0",
+    "vow": "~0.3.13",
+    "enb-bembundle": "~1.0.2",
+    "borschik": "~1.0.5",
+    "enb-borschik": "~1.0.4",
+    "enb-diverse-js": "~0.1.0"
+  }
+}
