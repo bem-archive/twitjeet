@@ -2,10 +2,19 @@
 {
     font-family: Arial;
 
+    border-radius: 20px;
+    display: inline-block;
+    background: #ccc;
+
     &__form,
     &__content
     {
-        padding: 1em;
+        padding: 2em;
+    }
+
+    &__content
+    {
+        padding-top: 0;
     }
 
     .input
@@ -16,8 +25,10 @@
     &__tweet
     {
         width: 400px;
-        padding: 0.5em;
+        margin-bottom: 0.3em;
+        padding: 1em;
+        border-radius: 10px;
 
-        border-top: 1px solid #aaa;
+        background: #fff;
     }
 }

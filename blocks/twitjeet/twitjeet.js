@@ -4,7 +4,9 @@ provide(BEMDOM.decl(this.name, {
 
     _onSubmit: function(e) {
         e.preventDefault();
-        this._sendRequest();
+        this.findBlockInside('input').getVal()?
+            this._sendRequest() :
+            this._updateContent();
     },
 
     _sendRequest: function() {
@@ -14,11 +16,13 @@ provide(BEMDOM.decl(this.name, {
             cache: false,
             url: '/search',
             data: this.elem('form').serialize(),
-            success: function(result) {
-                result && BEMDOM.update(this.elem('content'), result);
-            },
+            success: this._updateContent,
             context: this
         });
+    },
+
+    _updateContent: function(html) {
+        BEMDOM.update(this.elem('content'), html || '');
     }
 
 }, {

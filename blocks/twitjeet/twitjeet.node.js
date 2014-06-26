@@ -32,7 +32,7 @@
                 twit: twit,
                 twitterText: twitterText,
                 query: query,
-                count: 10
+                count: 5
             };
 
         /*twit.get('search/tweets', { q: query, count: 10 }, function(err, result) {
