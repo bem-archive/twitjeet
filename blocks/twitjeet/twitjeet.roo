@@ -1,7 +1,5 @@
 .twitjeet
 {
-    font-family: Arial;
-
     border-radius: 20px;
     display: inline-block;
     background: #ccc;

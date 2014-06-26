@@ -3,8 +3,7 @@ module.exports = function(config) {
     config.node('bundles/index', function(nodeConfig) {
         nodeConfig.addTechs([
             [ require('enb/techs/levels'), { levels: getLevels() } ],
-            [ require('enb/techs/file-provider'), { target: '?.bemjson.js' } ],
-            require('enb/techs/bemdecl-from-bemjson'),
+            [ require('enb/techs/file-provider'), { target: '?.bemdecl.js' } ],
             [ require('enb-modules/techs/deps-with-modules') ],
             require('enb/techs/files'),
 
@@ -17,14 +16,10 @@ module.exports = function(config) {
 
             [ require('enb-bemxjst/techs/bemtree'), { devMode: true } ],
             [ require('enb-bemxjst/techs/bemhtml'), { devMode: true } ],
-            require('enb/techs/html-from-bemjson'),
-            //[ require('enb/techs/file-merge'), { sources: ['?.bemtree.js', '?.bemhtml.js'], target: '?.bemxjst.js' } ],
-            //require('./enb-techs/html-from-bemjson'),
-
             [ require('enb-diverse-js/techs/node-js'), { target: '?.pre.node.js' } ],
             [ require('enb-modules/techs/prepend-modules'), { source: '?.pre.node.js', target: '?.node.js' } ]
         ]);
-        nodeConfig.addTargets(['_?.css', '_?.js', '?.html', '?.node.js', '?.bemtree.js']);
+        nodeConfig.addTargets(['_?.css', '_?.js', '?.bemhtml.js', '?.node.js', '?.bemtree.js']);
 
         function getLevels() {
             return [
