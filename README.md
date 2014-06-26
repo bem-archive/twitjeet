@@ -1,16 +1,16 @@
-## bem-core stub
+## Twitjeet
 
 ### Installation
 
 ```
-> git clone https://github.yandex-team.ru/einstain/bem-core-stub.git
-> cd bem-core-stub
+> git clone https://github.yandex-team.ru/einstain/twitjeet.git
+> cd twitjeet
 > npm i
 > ./node_modules/.bin/bower i
 ```
 
-### Run development server
+### Run app
 
 ```
-> ./node_modules/.bin/enb server
+> ./bemmake
 ```
