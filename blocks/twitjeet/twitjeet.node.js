@@ -1,37 +1,48 @@
 !function() {
 
     var fs = require('fs'),
-        PATH = require('path'),
+        path = require('path'),
         express = require('express'),
         app = express(),
         url = require('url'),
         querystring = require('querystring'),
         moment = require('moment'),
         morgan = require('morgan'),
-        pathToBundle = PATH.join('.', 'bundles', 'index');
+        //middleware = require('enb/lib/server/server-middleware'),
+        pathToBundle = path.join('.', 'bundles', 'index');
 
-    var config = {
-            consumer_key: 'UBvIdyLNscToLGMJjehTVjsyn',
-            consumer_secret: 'ExZP2gdZDFKaZGAAP6mTwUb0b4AUUfl1uOHw5A6xmS9g3b48Cr',
-            access_token: '2451167779-pZURihZ05FykhQhn4YyUnlhSHNxsRoJt8OWqSnv',
-            access_token_secret: 'udRBOFvlZhWW8TNBogo03Qy7YMlSbICIgiUtSuXl8Kexr'
-        },
+    var config = require('./twitjeet.config.js'),
         twit = new (require('twit'))(config),
         twitterText = require('twitter-text');
 
     app
         .disable('x-powered-by')
         .use(morgan('dev'))
+        //.use(middleware.createMiddleware({}))
         .use(express.static(pathToBundle));
+
+    var BEMTREE = require(path.join(path.resolve(pathToBundle), 'index.bemtree.js')).BEMTREE,
+        BEMHTML = require(path.join(path.resolve(pathToBundle), 'index.bemhtml.js')).BEMHTML;
 
     app.get('/search', function(req, res) {
         var search = url.parse(req.url, true).query,
-            query = querystring.escape(search.query);
+            query = querystring.escape(search.query),
+            bemjson = {
+                block: 'twitjeet',
+                twit: twit,
+                twitterText: twitterText,
+                query: query,
+                count: 10
+            };
 
-        twit.get('search/tweets', { q: query, count: 10 }, function(err, result) {
+        /*twit.get('search/tweets', { q: query, count: 10 }, function(err, result) {
             res.end(JSON.stringify(result.statuses.map(function(status) {
                 return twitterText.autoLink(twitterText.htmlEscape(status.text));
             })));
+        });*/
+
+        BEMTREE.apply(bemjson).then(function(result) {
+            res.end(BEMHTML.apply(result));
         });
     });
 

@@ -10,21 +10,15 @@ provide(BEMDOM.decl(this.name, {
     _sendRequest: function() {
         $.ajax({
             type: 'GET',
-            dataType: 'json',
+            dataType: 'html',
             cache: false,
             url: '/search',
             data: this.elem('form').serialize(),
             success: function(result) {
-                result && this._updateContent(result);
+                result && BEMDOM.update(this.elem('content'), result);
             },
             context: this
         });
-    },
-
-    _updateContent: function(data) {
-        BEMDOM.update(this.elem('content'), data.map(function(item) {
-            return '<br/><br/>' + item;
-        }));
     }
 
 }, {

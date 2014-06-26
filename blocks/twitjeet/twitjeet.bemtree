@@ -1,0 +1,18 @@
+block('twitjeet').def()(function() {
+    return this.doAsync(function() {
+        var ctx = this.ctx,
+            promise = Vow.promise();
+
+        ctx.twit.get('search/tweets', { q: ctx.query, count: ctx.count }, function(err, result) {
+            promise.fulfill(result.statuses.map(function(status) {
+                return {
+                    block: 'twitjeet',
+                    elem: 'tweet',
+                    content: ctx.twitterText.autoLink(ctx.twitterText.htmlEscape(status.text))
+                }
+            }));
+        });
+
+        return promise;
+    }.bind(this));
+})
