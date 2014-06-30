@@ -18,5 +18,5 @@
 ### Run app
 
 ```
-> ./bemmake
+> node .
 ```
