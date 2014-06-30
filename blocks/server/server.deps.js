@@ -7,6 +7,7 @@
             mods: { theme: 'normal' },
             elems: ['css', 'js']
         },
-        'twitjeet'
+        'twitjeet',
+        'icon'
     ]
 })

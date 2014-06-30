@@ -2,10 +2,13 @@ block('twitjeet')(
     def()(function() {
         return applyNext({ _ctx: this.ctx });
     }),
-    content()([
-        { elem: 'head', content: 'Twitjeet!' },
-        { elem: 'content' }
-    ]),
+    content()(function() {
+        return [
+            { elem: 'head', content: 'Twitjeet!' },
+            { elem: 'query', content: this.ctx.query + ':' },
+            { elem: 'content' }
+        ]
+    }),
     elem('content').content()(function() {
         var ctx = this._ctx;
 
