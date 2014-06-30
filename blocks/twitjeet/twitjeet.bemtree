@@ -1,23 +1,32 @@
-block('twitjeet').content()(function() {
-    var ctx = this.ctx;
+block('twitjeet')(
+    def()(function() {
+        return applyNext({ _ctx: this.ctx });
+    }),
+    content()([
+        { elem: 'head', content: 'Twitjeet!' },
+        { elem: 'content' }
+    ]),
+    elem('content').content()(function() {
+        var ctx = this._ctx;
 
-    return this.doAsync(function() {
-        var defer = Vow.defer(),
-            promise = defer.promise();
+        return this.doAsync(function() {
+            var defer = Vow.defer(),
+                promise = defer.promise();
 
-        twit.get('search/tweets', { q: ctx.query, count: ctx.count }, function(err, result) {
-            if (err) return defer.reject(new Error('Server error'));
+            twit.get('search/tweets', { q: ctx.query, count: ctx.count }, function(err, result) {
+                if (err) return defer.reject(new Error('Server error'));
 
-            defer.resolve(result.statuses.map(function(status) {
-                return {
-                    block: 'twitjeet',
-                    elem: 'tweet',
-                    content: twitterText.autoLink(twitterText.htmlEscape(status.text))
-                };
-            }));
+                defer.resolve(result.statuses.map(function(status) {
+                    return {
+                        block: 'twitjeet',
+                        elem: 'tweet',
+                        content: twitterText.autoLink(twitterText.htmlEscape(status.text))
+                    };
+                }));
+            });
+
+            return promise;
+
         });
-
-        return promise;
-
-    });
-})
+    })
+)

@@ -1,4 +1,6 @@
 .page.page_theme_normal
 {
-    background: #ccc;
+    padding: 2em;
+
+    background: #000;
 }

@@ -1,28 +1,11 @@
-body
-{
-    background: #000;
-}
-
 .twitjeet
 {
-    font-family: Arial;
-
-    width: 500px;
+    width: 400px;
     margin: 0 auto;
+    padding: 2em;
 
     border-radius: 20px;
     background: #63d;
-
-    &__form,
-    &__content
-    {
-        padding: 2em;
-    }
-
-    &__content
-    {
-        padding-top: 0;
-    }
 
     .input
     {
@@ -45,7 +28,7 @@ body
     {
         color: #ff0;
         font-size: 2em;
-        padding: 1em 2em 0;
+        padding: 0 2em 1em;
         text-align: center;
     }
 }
