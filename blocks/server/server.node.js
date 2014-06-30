@@ -1,4 +1,4 @@
-modules.require(['vow', 'twitjeet'], function(Vow, config) {
+modules.require(['vow', 'twitjeet'], function(Vow, twitjeet) {
 
 var fs = require('fs'),
     path = require('path'),
@@ -13,8 +13,7 @@ var fs = require('fs'),
     ctx = vm.createContext({
         Vow: Vow,
         console: console,
-        twit: new (require('twit'))(config),
-        twitterText: require('twitter-text')
+        twitjeet: twitjeet
     }),
     pathToBundle = path.resolve('.', 'bundles', 'index');
 

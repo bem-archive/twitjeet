@@ -11,9 +11,10 @@ block('twitjeet')(
 
         return this.doAsync(function() {
             var defer = Vow.defer(),
-                promise = defer.promise();
+                promise = defer.promise(),
+                twitterText = twitjeet.twitterText;
 
-            twit.get('search/tweets', { q: ctx.query, count: ctx.count }, function(err, result) {
+            twitjeet.twit.get('search/tweets', { q: ctx.query, count: ctx.count }, function(err, result) {
                 if (err) return defer.reject(new Error('Server error'));
 
                 defer.resolve(result.statuses.map(function(status) {
