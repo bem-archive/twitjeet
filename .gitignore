@@ -3,4 +3,4 @@ libs
 node_modules
 
 bundles/*/*.*
-!bundles/*/*.bemjson.js
+!bundles/*/*.bemdecl.js
