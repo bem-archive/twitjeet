@@ -14,7 +14,6 @@ Simple widget for [Twitter](https://twitter.com/).
 > git clone https://github.com/bem/twitjeet.git
 > cd twitjeet
 > npm i
-> ./node_modules/.bin/bower i
 ```
 
 ### Build
