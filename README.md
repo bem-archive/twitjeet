@@ -2,7 +2,7 @@
 
 ### What?
 
-Simple widget for Twitter.
+Simple widget for [Twitter](https://twitter.com/).
 
 ### Why?
 
@@ -31,4 +31,4 @@ Simple widget for Twitter.
 
 ### Usage
 
-http://localhost:3000/?query=hello&count=5
+[http://localhost:3000/?query=hello&count=5](http://localhost:3000/?query=hello&count=5)
