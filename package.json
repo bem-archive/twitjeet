@@ -21,6 +21,6 @@
     "morgan": "~1.1.1"
   },
   "scripts": {
-    "install": "./node_modules/.bin/bower i"
+    "install": "bower i"
   }
 }
