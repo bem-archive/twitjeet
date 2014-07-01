@@ -31,4 +31,5 @@ Simple widget for [Twitter](https://twitter.com/).
 
 ### Usage
 
-[http://localhost:3000/?query=hello&count=5](http://localhost:3000/?query=hello&count=5)
+[http://localhost:3000](http://localhost:3000)
+[http://localhost:3000/?query=hi&count=5](http://localhost:3000/?query=hello&count=5)
