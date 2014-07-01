@@ -39,7 +39,7 @@ app.get('/', function(req, res) {
         content: [
             {
                 block: 'twitjeet',
-                query: url.parse(req.url, true).query.query || '@bem_ru',
+                query: url.parse(req.url, true).query.query,
                 count: 10
             },
             {
