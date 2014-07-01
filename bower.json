@@ -5,7 +5,6 @@
     "Vyacheslav Aristov <einstain@yandex-team.ru>"
   ],
   "dependencies": {
-    "bem-core": "bem/bem-core#~2.2.4",
     "bem-components": "bem/bem-components#v2"
   },
   "ignore": [
