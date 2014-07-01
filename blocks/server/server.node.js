@@ -1,4 +1,4 @@
-modules.require(['vow', 'twitjeet'], function(Vow, twitjeet) {
+modules.require(['vow'], function(Vow) {
 
 var fs = require('fs'),
     path = require('path'),
@@ -9,8 +9,7 @@ var fs = require('fs'),
     vm = require('vm'),
     ctx = vm.createContext({
         Vow: Vow,
-        console: console,
-        twitjeet: twitjeet
+        console: console
     }),
     pathToBundle = path.resolve('.', 'bundles', 'index');
 
@@ -35,15 +34,7 @@ app.get('/', function(req, res) {
         styles: [{ elem: 'css', url: '_index.css' }],
         mods: { theme: 'normal' },
         content: [
-            {
-                block: 'twitjeet',
-                query: search.query,
-                count: search.count
-            },
-            {
-                block: 'icon',
-                mods: { type: 'bem' }
-            }
+            'Hello world!'
         ]
     }).then(function(bemjson) {
         res.end(BEMHTML.apply(bemjson));
