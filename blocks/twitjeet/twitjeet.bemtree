@@ -1,25 +1,26 @@
 block('twitjeet')(
-    def()(function() {
-        return applyNext({ _ctx: this.ctx });
-    }),
     content()(function() {
+        var ctx = this.ctx,
+            query = ctx.query || '@bem_ru';
         return [
             { elem: 'head', content: 'Twitjeet!' },
-            { elem: 'query', content: this.ctx.query + ':' },
-            { elem: 'content' }
-        ]
+            { elem: 'query', content: query + ':' },
+            { elem: 'content', query: query, count: ctx.count || 7 }
+        ];
     }),
     elem('content').content()(function() {
-        var ctx = this._ctx,
-            query = ctx.query || '@bem_ru',
-            count = ctx.count || 5;
+        var ctx = this.ctx,
+            params = {
+                q: ctx.query,
+                count: ctx.count
+            };
 
         return this.doAsync(function() {
             var defer = Vow.defer(),
                 promise = defer.promise(),
                 twitterText = twitjeet.twitterText;
 
-            twitjeet.twit.get('search/tweets', { q: query, count: count }, function(err, result) {
+            twitjeet.twit.get('search/tweets', params, function(err, result) {
                 if (err) return defer.reject(new Error('Server error'));
 
                 defer.resolve(result.statuses.map(function(status) {

@@ -5,9 +5,7 @@ var fs = require('fs'),
     express = require('express'),
     app = express(),
     url = require('url'),
-    moment = require('moment'),
     morgan = require('morgan'),
-    //middleware = require('enb/lib/server/server-middleware'),
     vm = require('vm'),
     ctx = vm.createContext({
         Vow: Vow,
@@ -19,7 +17,6 @@ var fs = require('fs'),
 app
     .disable('x-powered-by')
     .use(morgan('dev'))
-    //.use(middleware.createMiddleware({}))
     .use(express.static(pathToBundle));
 
 var BEMTREE = fs.readFileSync(path.join(pathToBundle, 'index.bemtree.js'), 'utf-8'),
@@ -30,6 +27,8 @@ vm.runInContext(BEMTREE, ctx);
 BEMTREE = ctx.BEMTREE;
 
 app.get('/', function(req, res) {
+    var search = url.parse(req.url, true).query;
+
     BEMTREE.apply({
         block: 'page',
         title: 'Twitjeet!',
@@ -39,8 +38,8 @@ app.get('/', function(req, res) {
         content: [
             {
                 block: 'twitjeet',
-                query: url.parse(req.url, true).query.query,
-                count: 10
+                query: search.query,
+                count: search.count
             },
             {
                 block: 'icon',
