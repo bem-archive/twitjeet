@@ -5,9 +5,7 @@
         {
             block: 'page',
             mods: { theme: 'normal' },
-            elems: ['css', 'js']
-        },
-        'twitjeet',
-        'icon'
+            elems: ['css']
+        }
     ]
 })
