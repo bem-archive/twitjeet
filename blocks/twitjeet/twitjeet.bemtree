@@ -5,10 +5,10 @@ block('twitjeet')(
         return [
             { elem: 'head', content: 'Twitjeet!' },
             { elem: 'query', content: query + ':' },
-            { elem: 'content', query: query, count: ctx.count || 7 }
+            { elem: 'list', query: query, count: ctx.count || 7 }
         ];
     }),
-    elem('content').content()(function() {
+    elem('list').content()(function() {
         var ctx = this.ctx,
             params = {
                 q: ctx.query,
