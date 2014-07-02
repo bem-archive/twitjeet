@@ -7,7 +7,7 @@ module.exports = function(config) {
             [ require('enb-modules/techs/deps-with-modules') ],
             require('enb/techs/files'),
 
-            require('enb-roole/techs/css-roole'),
+            require('enb-stylus/techs/css-stylus'),
             [ require('enb-borschik/techs/borschik'), { sourceTarget: '?.css', destTarget: '_?.css', minify: false, freeze: true } ],
 
             require('enb-diverse-js/techs/browser-js'),

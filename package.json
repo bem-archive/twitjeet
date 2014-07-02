@@ -6,8 +6,6 @@
     "enb": "~0.13.4",
     "ym": "~0.1.0",
     "enb-modules": "~0.1.2",
-    "roole": "~0.9.0",
-    "enb-roole": "~0.2.1",
     "enb-bemxjst": "~1.2.0",
     "vow": "~0.3.13",
     "enb-bembundle": "~1.0.2",
@@ -18,6 +16,7 @@
     "twit": "~1.1.15",
     "twitter-text": "~1.9.0",
     "express": "~4.4.4",
-    "morgan": "~1.1.1"
+    "morgan": "~1.1.1",
+    "enb-stylus": "~1.0.0"
   }
 }
